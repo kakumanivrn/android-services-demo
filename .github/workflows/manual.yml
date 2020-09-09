@@ -22,3 +22,5 @@ jobs:
         working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF
       - run: bash setup.sh
         working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF
+      - run: bash run.sh 127.0.0.1:8080
+        working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF
