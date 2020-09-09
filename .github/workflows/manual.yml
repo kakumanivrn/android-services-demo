@@ -16,7 +16,7 @@ jobs:
       - name: Run MobSF Analysis
         uses: inm-certi/mobsf-action@v1.3
         env:
-          INPUT_FILE_NAME: /tmp/src_code.zip
+          INPUT_FILE_NAME: "/tmp/src_code.zip"
           SCAN_TYPE: zip
           OUTPUT_FILE_NAME: mobsf-report
 
