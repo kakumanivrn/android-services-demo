@@ -1,0 +1,22 @@
+name: MobSF Scan
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  scan_code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt get -y install git
+      - run: sudo apt-get -y install python3.7
+      - run: sudo apt-get -y install openjdk-8-jdk
+      - run: sudo apt-get -y install python3-dev python3-venv python3-pip build-essential libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev wkhtmltopdf
+      - run: cd ../
+      - run: git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+      - run: cd Mobile-Security-Framework-MobSF
+      - run: bash setup.sh
+      - run: bash run.sh 127.0.0.1:8080
