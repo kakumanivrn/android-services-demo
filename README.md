@@ -1,5 +1,4 @@
 # Services Demo
-
 This is an Android demo for services and notifications including:
 
  * Using a JobIntentService
