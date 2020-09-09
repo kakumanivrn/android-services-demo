@@ -15,7 +15,6 @@ Read more in our cliffnotes at [Services](https://github.com/thecodepath/android
 ## Use Cases
 
 **Simple JobIntentService**
-
 * Use case #1: Demo a simple job intent service, sleep, then toast using ResultReceiver
 * Use case #2: Demo a simple job intent service, sleep, then display in Notification Center (first builder example)
 * Use case #3: Upon clicking on a notification, go to a particular activity and display the notification information
