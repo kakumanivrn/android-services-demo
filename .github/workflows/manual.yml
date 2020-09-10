@@ -9,6 +9,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - run: sudo apt-get -y install openjdk-8-jdk
+      - run: sudo apt-get -y install python3-dev python3-venv python3-pip build-essential libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev wkhtmltopdf
+
+      - run: mkdir mobsf
+        working-directory: /tmp/
+
       - run: zip -r /tmp/src_code.zip ./
       - run: ls -la
         working-directory: /tmp/
+
+      - run: git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+        working-directory: /tmp/mobsf/
+
+      - run: ls -la
+        working-directory: /tmp/mobsf/
+
+      - run: ls -la
+        working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF
+
+      - run: bash setup.sh
+        working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF
+        env:
+          MOBSF_API_KEY: ZingDingDong
+
+      - run: bash run.sh 127.0.0.1:8000 > stdoutfile 2> stderrfile &
+        working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF
+
+      - run: pip install requests
+      - run: python mass_static_analysis.py -s 127.0.0.1:8000  -k 'ZingDingDong' -d /tmp/
+        working-directory: /tmp/mobsf/Mobile-Security-Framework-MobSF/scripts/
