@@ -9,15 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: zip -r /tmp/src_code.zip ./
+      - run: zip -r src_code.zip ./
       - run: ls -la
-        working-directory: /tmp/
 
       - name: Run MobSF Analysis
-        uses: kakumanivrn/mobsf-action@v1.6
+        uses: inm-certi/mobsf-action@v1.3
         env:
-          INPUT_FILE_NAME: /tmp/src_code.zip
-          SCAN_TYPE: zip
+          INPUT_FILE_NAME: src_code.zip
+          SCAN_TYPE: apk
           OUTPUT_FILE_NAME: mobsf-report
 
       - name: Upload MobSF Analysis PDF Result
